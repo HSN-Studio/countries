@@ -3,15 +3,14 @@ import Country from "./Country";
 
 function Countries({ data }) {
   if (!data) return null;
-  console.log(data);
 
   const countries = data.map((country) => {
     return <Country data={country} />;
   });
   // Regular Methods
-  // const loadCountries = function (countries) {
-  //   countries.map((country) => <Country country={country} />);
-  // };
+  const loadCountries = function (countries) {
+    countries.map((country) => <Country country={country} />);
+  };
 
   return countries;
 }
