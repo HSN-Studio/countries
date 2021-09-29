@@ -7,7 +7,7 @@ export default function Paginations({ changeHandler, resultsCount }) {
   let pageCount = Math.ceil(resultsCount / 25);
   console.log(pageCount);
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} className="pagination">
       <Pagination
         count={pageCount}
         shape="rounded"

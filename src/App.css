@@ -129,7 +129,7 @@ body {
   color: black !important;
   filter: drop-shadow(0 0.3rem 5px rgba(51, 51, 51, 0.123));
 }
-.css-1p5q5e5-MuiStack-root {
+.pagination {
   align-items: center;
   margin-bottom: 1rem;
 }
