@@ -1,11 +1,13 @@
 import React from "react";
 import Country from "./Country";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-function Countries({ data }) {
+function Countries({ data, page }) {
   if (!data) return null;
+  const resPerPage = 25,
+    start = (page - 1) * resPerPage,
+    end = page * resPerPage;
+  const dataPortion = data.slice(start, end);
 
-  const countries = data.map((country) => {
+  const countries = dataPortion.map((country) => {
     return <Country data={country} />;
   });
   // Regular Methods

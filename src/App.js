@@ -11,6 +11,7 @@ function App() {
   const [countries, setcountries] = useState(``);
   const [searchRes, setsearchRes] = useState(``);
   const [region, setregion] = useState(``);
+  const [pageNo, setpageNo] = useState(1);
 
   //LifeCycle Hooks
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
 
   const changeHandler = (e) => {
     if (countries.length < 1) return null;
+    setpageNo(1);
     if (e.target.value.length < 1) setsearchRes(countries);
     const searchResults = countries.filter(
       (country) =>
@@ -45,6 +47,7 @@ function App() {
   const filterHandler = (e) => {
     // While results are loaded.
     if (searchRes.length < 1) return null;
+    setpageNo(1);
     // Set filter value
     setregion(e.target.value);
     // When No filter is applied
@@ -56,6 +59,11 @@ function App() {
     if (e.target.value !== "None") setsearchRes(filteredResults);
   };
 
+  const paginationHandler = (pageNo) => {
+    console.log(pageNo);
+    if (searchRes.length < 1) return;
+    setpageNo(pageNo);
+  };
   //JSX
   return (
     <div className="App">
@@ -63,9 +71,12 @@ function App() {
       <Search changeHandler={changeHandler} />
       <Filter changeHandler={filterHandler} region={region} />
       <div className="countries-container">
-        <Countries data={searchRes} />
+        <Countries data={searchRes} page={pageNo} />
       </div>
-      <Paginations />
+      <Paginations
+        changeHandler={paginationHandler}
+        resultsCount={searchRes.length}
+      />
     </div>
   );
 }
