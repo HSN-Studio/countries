@@ -5,6 +5,12 @@
 - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
 - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
 
+/* -------------------- Dark Mode -------------------- */
+/* * {
+  background-color: hsl(207, 26%, 17%) !important;
+  color: white !important;
+} */
+
 body {
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
@@ -53,7 +59,7 @@ body {
 }
 .search-container input {
   width: 90%;
-  height: 3rem;
+  height: 3.5rem;
   padding: 1rem;
   border-radius: 0 0.5rem 0.5rem 0;
   border: none;
@@ -62,7 +68,7 @@ body {
 
 .search-icon {
   position: relative;
-  height: 3rem;
+  height: 3.5rem;
   width: 8%;
   padding: 0 1rem;
   border-radius: 0.5rem 0 0 0.5rem;
@@ -109,18 +115,27 @@ body {
 
 .countries-container {
   padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2vw;
+  align-content: center;
+  justify-content: center;
 }
 .country {
   border-radius: 0.5rem;
   box-shadow: 0px 1px 10px rgba(51, 51, 51, 0.302);
   margin: 2rem 0;
+  height: auto;
 }
 .flag {
   width: 100%;
+  height: auto;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 .country-details {
-  padding: 1rem;
+  padding: 0.5rem 1rem 0 1rem;
+  overflow-wrap: break-word;
 }
 
 /* -------------------- Pagination -------------------- */
@@ -132,6 +147,35 @@ body {
 .pagination {
   align-items: center;
   margin-bottom: 1rem;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .countries-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .country {
+    width: 28vw;
+  }
+  .search-filter {
+    display: flex;
+    justify-content: space-between;
+  }
+  .search-container {
+    padding: 2rem;
+  }
+  .filter {
+    width: 20%;
+    padding: 2rem;
+  }
+}
+@media only screen and (min-device-width: 1024px) {
+  .countries-container {
+    padding: 0 1rem;
+  }
+  .country {
+    width: 21vw;
+  }
 }
 /* - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
 - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)

@@ -5,6 +5,7 @@ import Search from "./components/Search";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
 import Paginations from "./components/Paginations";
+import { Router, Route, Switch } from "react-router";
 
 function App() {
   //States
@@ -68,8 +69,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Search changeHandler={changeHandler} />
-      <Filter changeHandler={filterHandler} region={region} />
+      <div className="search-filter">
+        <Search changeHandler={changeHandler} />
+        <Filter changeHandler={filterHandler} region={region} />
+      </div>
       <div className="countries-container">
         <Countries data={searchRes} page={pageNo} />
       </div>

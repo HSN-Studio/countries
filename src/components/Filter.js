@@ -21,8 +21,8 @@ function Filter({ changeHandler, region }) {
           label="filter"
           onChange={changeHandler}
         >
-          <MenuItem value="None">
-            <em>None</em>
+          <MenuItem value="None" className="menu-item" id="top">
+            All Countries
           </MenuItem>
           <MenuItem value={"Africa"} className="menu-item">
             Africa
