@@ -5,7 +5,8 @@ import Search from "./components/Search";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
 import Paginations from "./components/Paginations";
-import { Router, Route, Switch } from "react-router";
+import CountryDetails from "./components/CountryDetails";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   //States
@@ -13,6 +14,7 @@ function App() {
   const [searchRes, setsearchRes] = useState(``);
   const [region, setregion] = useState(``);
   const [pageNo, setpageNo] = useState(1);
+  const [darkMode, setdarkMode] = useState("");
 
   //LifeCycle Hooks
   useEffect(() => {
@@ -65,22 +67,41 @@ function App() {
     if (searchRes.length < 1) return;
     setpageNo(pageNo);
   };
+
+  const darkModeHandler = () => {
+    darkMode === "" ? setdarkMode("dark-mode") : setdarkMode("");
+    document.body.classList.toggle("dark-mode-bg");
+  };
   //JSX
   return (
-    <div className="App">
-      <Header />
-      <div className="search-filter">
-        <Search changeHandler={changeHandler} />
-        <Filter changeHandler={filterHandler} region={region} />
+    <Router>
+      <div className="App">
+        <Header clickHandler={darkModeHandler} darkMode={darkMode} />
+        <Switch>
+          <Route exact path="/">
+            <div className="search-filter">
+              <Search changeHandler={changeHandler} darkMode={darkMode} />
+              <Filter
+                changeHandler={filterHandler}
+                region={region}
+                darkMode={darkMode}
+              />
+            </div>
+            <div className="countries-container">
+              <Countries data={searchRes} page={pageNo} darkMode={darkMode} />
+            </div>
+            <Paginations
+              changeHandler={paginationHandler}
+              resultsCount={searchRes.length}
+              darkMode={darkMode}
+            />
+          </Route>
+          <Route path="/">
+            <CountryDetails />
+          </Route>
+        </Switch>
       </div>
-      <div className="countries-container">
-        <Countries data={searchRes} page={pageNo} />
-      </div>
-      <Paginations
-        changeHandler={paginationHandler}
-        resultsCount={searchRes.length}
-      />
-    </div>
+    </Router>
   );
 }
 

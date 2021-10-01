@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormControl, Select, InputLabel, MenuItem } from "@mui/material";
 
-function Filter({ changeHandler, region }) {
+function Filter({ changeHandler, region, darkMode }) {
   // States
 
   // Regular Functions
@@ -13,13 +13,16 @@ function Filter({ changeHandler, region }) {
         variant="outlined"
         sx={{ border: "none", outline: "none" }}
       >
-        <InputLabel id="filter-label">Filter by Region:</InputLabel>
+        <InputLabel id="filter-label" className={`${darkMode}`}>
+          Filter by Region:
+        </InputLabel>
         <Select
           labelId="filter-label"
           id="filter"
           value={region}
           label="filter"
           onChange={changeHandler}
+          className={`${darkMode}`}
         >
           <MenuItem value="None" className="menu-item" id="top">
             All Countries

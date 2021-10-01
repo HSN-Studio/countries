@@ -6,16 +6,23 @@
 - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
 
 /* -------------------- Dark Mode -------------------- */
-/* * {
-  background-color: hsl(207, 26%, 17%) !important;
+.dark-mode {
+  background-color: hsl(209, 23%, 22%) !important;
   color: white !important;
-} */
+}
+.dark-mode-bg {
+  background-color: hsl(207, 26%, 17%) !important;
+}
 
 body {
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
   padding: 0;
   background-color: hsl(0, 0%, 98%);
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* -------------------- Header -------------------- */
@@ -52,7 +59,7 @@ body {
 }
 /* -------------------- Search -------------------- */
 .search-container {
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem;
   display: flex;
   justify-content: center;
   filter: drop-shadow(0 0.3rem 5px rgba(51, 51, 51, 0.123));
@@ -85,6 +92,9 @@ body {
   filter: drop-shadow(0 0.3rem 5px rgba(51, 51, 51, 0.123));
   outline: none !important;
 }
+.MuiPaper-root {
+  margin-top: 0.5rem;
+}
 
 .menu-item {
   font-family: "Nunito Sans", sans-serif !important;
@@ -115,6 +125,7 @@ body {
 
 .countries-container {
   padding: 0 2rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -125,14 +136,16 @@ body {
 .country {
   border-radius: 0.5rem;
   box-shadow: 0px 1px 10px rgba(51, 51, 51, 0.302);
-  margin: 2rem 0;
+  margin: 1rem 0 0 0;
   height: auto;
 }
+
 .flag {
   width: 100%;
   height: auto;
   border-radius: 0.5rem 0.5rem 0 0;
 }
+
 .country-details {
   padding: 0.5rem 1rem 0 1rem;
   overflow-wrap: break-word;
@@ -146,10 +159,13 @@ body {
 }
 .pagination {
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (min-device-width: 768px) {
+  .header {
+    padding: 1rem 2rem;
+  }
   .countries-container {
     flex-direction: row;
     justify-content: space-around;
@@ -170,9 +186,6 @@ body {
   }
 }
 @media only screen and (min-device-width: 1024px) {
-  .countries-container {
-    padding: 0 1rem;
-  }
   .country {
     width: 21vw;
   }
