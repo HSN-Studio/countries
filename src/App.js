@@ -78,7 +78,7 @@ function App() {
       <div className="App">
         <Header clickHandler={darkModeHandler} darkMode={darkMode} />
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <div className="search-filter">
               <Search changeHandler={changeHandler} darkMode={darkMode} />
               <Filter
@@ -96,7 +96,7 @@ function App() {
               darkMode={darkMode}
             />
           </Route>
-          <Route path="/">
+          <Route exact path="/Afghanistan">
             <CountryDetails />
           </Route>
         </Switch>

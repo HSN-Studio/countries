@@ -9,7 +9,12 @@ function Header({ clickHandler, darkMode }) {
         <h1 className="title">Where in the World?</h1>
       </Link>
       <button className={`toggle ${darkMode}`} onClick={clickHandler}>
-        <RiMoonClearLine className="icon" />
+        {darkMode === "" ? (
+          <RiMoonClearLine className="icon" />
+        ) : (
+          <RiMoonClearFill className="icon" />
+        )}
+
         <p>Dark Mode</p>
       </button>
     </div>
