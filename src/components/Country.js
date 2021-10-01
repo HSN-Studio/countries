@@ -1,10 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Country({ data, darkMode }) {
+function Country({ data, darkMode, handler }) {
+  const sendName = (country) => {
+    handler(country);
+  };
+
   return (
-    <div className={`country ${darkMode}`}>
-      <Link to={data.name.common}>
+    <div
+      className={`country ${darkMode}`}
+      onClick={() => sendName(data.name.common.replace(" ", "-"))}
+    >
+      <Link to={data.name.common.replace(" ", "-")}>
         <img alt="country-flag" src={data.flags[0]} className="flag"></img>
 
         <div className="country-details">

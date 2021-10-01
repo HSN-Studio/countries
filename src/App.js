@@ -15,6 +15,7 @@ function App() {
   const [region, setregion] = useState(``);
   const [pageNo, setpageNo] = useState(1);
   const [darkMode, setdarkMode] = useState("");
+  const [countrySelected, setcountrySelected] = useState("");
 
   //LifeCycle Hooks
   useEffect(() => {
@@ -72,13 +73,17 @@ function App() {
     darkMode === "" ? setdarkMode("dark-mode") : setdarkMode("");
     document.body.classList.toggle("dark-mode-bg");
   };
+
+  const selCountryHandler = (country) => {
+    setcountrySelected(country);
+  };
   //JSX
   return (
     <Router>
       <div className="App">
         <Header clickHandler={darkModeHandler} darkMode={darkMode} />
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <div className="search-filter">
               <Search changeHandler={changeHandler} darkMode={darkMode} />
               <Filter
@@ -88,7 +93,12 @@ function App() {
               />
             </div>
             <div className="countries-container">
-              <Countries data={searchRes} page={pageNo} darkMode={darkMode} />
+              <Countries
+                data={searchRes}
+                page={pageNo}
+                darkMode={darkMode}
+                handler={selCountryHandler}
+              />
             </div>
             <Paginations
               changeHandler={paginationHandler}
@@ -96,7 +106,7 @@ function App() {
               darkMode={darkMode}
             />
           </Route>
-          <Route exact path="/Afghanistan">
+          <Route exact path={`/${countrySelected}`}>
             <CountryDetails />
           </Route>
         </Switch>
