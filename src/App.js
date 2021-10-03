@@ -16,6 +16,7 @@ function App() {
   const [pageNo, setpageNo] = useState(1);
   const [darkMode, setdarkMode] = useState("");
   const [countrySelected, setcountrySelected] = useState("");
+  const [countrySelectedName, setcountrySelectedName] = useState("");
 
   //LifeCycle Hooks
   useEffect(() => {
@@ -75,7 +76,12 @@ function App() {
   };
 
   const selCountryHandler = (country) => {
-    setcountrySelected(country);
+    searchRes.filter((res) => {
+      if (res.name.common.replace(" ", "-") === country) {
+        setcountrySelected(res);
+        setcountrySelectedName(country);
+      }
+    });
   };
   //JSX
   return (
@@ -106,8 +112,12 @@ function App() {
               darkMode={darkMode}
             />
           </Route>
-          <Route exact path={`/${countrySelected}`}>
-            <CountryDetails />
+          <Route>
+            <CountryDetails
+              exact
+              path={`/${countrySelectedName}`}
+              data={countrySelectedName}
+            />
           </Route>
         </Switch>
       </div>
