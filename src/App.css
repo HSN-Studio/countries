@@ -14,6 +14,9 @@
   background-color: hsl(207, 26%, 17%) !important;
 }
 
+.dark-mode-text {
+  color: white !important;
+}
 body {
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
@@ -174,9 +177,12 @@ a {
   border: none;
   padding: 1rem 3rem;
   filter: drop-shadow(0 0.3rem 5px rgba(51, 51, 51, 0.123));
-  display: flex;
+  display: inline-flex;
   justify-content: space-around;
   align-items: center;
+}
+.back-btn:hover {
+  cursor: pointer;
 }
 .back-icon {
   margin-right: 0.5rem;
@@ -200,8 +206,9 @@ a {
 .b-country-btn {
   background-color: white;
   border-radius: 0.1rem;
-  margin-right: 1rem;
+  margin: 0 1rem 1rem 0;
   border: none;
+  width: 5rem;
   padding: 0.5rem 1rem;
   filter: drop-shadow(0 0.3rem 5px rgba(51, 51, 51, 0.123));
 }
@@ -243,6 +250,7 @@ a {
   .left-col,
   .right-col {
     width: 50%;
+    padding: 2rem;
   }
 
   .country-info {

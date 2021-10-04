@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
-function CountryDetails({ data }) {
+function CountryDetails({ data, darkMode }) {
   // States
   const [country, setcountry] = useState("");
   const countryName = data;
@@ -40,19 +40,19 @@ function CountryDetails({ data }) {
   };
 
   return (
-    <div className="country-details-container">
-      <Link to="/">
-        <button className="back-btn">
+    <div className={`country-details-container`}>
+        <Link to="/">
+      <button className={`back-btn ${darkMode}`}>
           <BiArrowBack className="back-icon" />
           <p>Back</p>
-        </button>
-      </Link>
+      </button>
+        </Link>
       {!country ? null : (
         <div className="country-data">
           <div className="left-col">
             <img src={country.flags[0]} alt="country-flag"></img>
           </div>
-          <div className="right-col">
+          <div className={darkMode ? `right-col dark-mode-text` : `right-col`}>
             <h2>{country.name.official}</h2>
             <div className="country-info">
               <div className="info-left">
@@ -97,7 +97,11 @@ function CountryDetails({ data }) {
               {!country.borders
                 ? "No Border Country."
                 : country.borders.map((border) => {
-                    return <button className="b-country-btn">{border}</button>;
+                    return (
+                      <button className={`b-country-btn ${darkMode}`}>
+                        {border}
+                      </button>
+                    );
                   })}
             </div>
           </div>

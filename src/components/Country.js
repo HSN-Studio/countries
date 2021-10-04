@@ -18,7 +18,7 @@ function Country({ data, darkMode, handler }) {
           <h2>{data.name.common}</h2>
           <div className="population">
             <p>
-              <b>Population:</b>{" "}
+              <b>Area:</b>{" "}
               {data.area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
                 " km2"}
             </p>

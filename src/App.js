@@ -117,6 +117,7 @@ function App() {
               exact
               path={`/${countrySelectedName}`}
               data={countrySelectedName}
+              darkMode={darkMode}
             />
           </Route>
         </Switch>
