@@ -89,7 +89,7 @@ function App() {
       <div className="App">
         <Header clickHandler={darkModeHandler} darkMode={darkMode} />
         <Switch>
-          <Route exact path="/">
+          <Route exact path={process.env.PUBLIC_URL + "/"}>
             <div className="search-filter">
               <Search changeHandler={changeHandler} darkMode={darkMode} />
               <Filter
@@ -115,7 +115,7 @@ function App() {
           <Route>
             <CountryDetails
               exact
-              path={`/${countrySelectedName}`}
+              path={`${process.env.PUBLIC_URL}/${countrySelectedName}`}
               data={countrySelectedName}
               darkMode={darkMode}
             />

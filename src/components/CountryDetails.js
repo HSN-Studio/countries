@@ -41,12 +41,12 @@ function CountryDetails({ data, darkMode }) {
 
   return (
     <div className={`country-details-container`}>
-        <Link to="/">
-      <button className={`back-btn ${darkMode}`}>
+      <Link to={process.env.PUBLIC_URL + "/"}>
+        <button className={`back-btn ${darkMode}`}>
           <BiArrowBack className="back-icon" />
           <p>Back</p>
-      </button>
-        </Link>
+        </button>
+      </Link>
       {!country ? null : (
         <div className="country-data">
           <div className="left-col">
